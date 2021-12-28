@@ -1,5 +1,5 @@
 $USERNAME=$args[0]
-IMAGE=webwatcher
+$IMAGE="webwatcher"
 
 $version = Get-Content VERSION -Raw 
 echo "version: $version"
