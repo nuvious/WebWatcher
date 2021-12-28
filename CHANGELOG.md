@@ -1,6 +1,6 @@
 # CHANGELOG
 
-## 1.0.2 - 2021-12-18
+## 1.0.1 - 2021-12-18
 
 - Initial versioned docker image
 - Added functionality to override message format
