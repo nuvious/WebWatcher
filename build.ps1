@@ -1,4 +1,4 @@
 $USERNAME=$args[0]
 $IMAGE="webwatcher"
-Write-Host "Building to tag $USERNAME/webwatcher:latest"
-docker build -t "$USERNAME/webwatcher:latest" .
+Write-Host "Building to tag ${USERNAME}/${IMAGE}:latest"
+docker build -t "${USERNAME}/${IMAGE}:latest" .

@@ -5,7 +5,7 @@ $version = Get-Content VERSION -Raw
 echo "version: $version"
 
 # run build
-. build.ps1
+. ./build.ps1 ${USERNAME}
 
 # tag it
 git add -A
