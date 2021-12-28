@@ -1,11 +1,13 @@
-$USERNAME=$args[0]
+$ErrorActionPreference = "Stop"
+
+$USERNAME="nuvious"
 $IMAGE="webwatcher"
 
 $version = Get-Content VERSION -Raw 
 echo "version: $version"
 
 # run build
-. ./build.ps1 ${USERNAME}
+. ./build.ps1
 
 # tag it
 git add -A
