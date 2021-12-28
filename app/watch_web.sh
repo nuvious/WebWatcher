@@ -6,24 +6,20 @@ if [ ! -z ${var+SLEEP} ]; then
     exit 1
 fi
 
-if [ ! -z ${var+FILTER} ]; then
-    echo "FILTER variable must be set."
-    exit 1
-fi
-
 if [ ! -z ${var+URL} ]; then
     echo "URL variable must be set."
 fi
 
 source lib/notify.sh
+source lib/match.sh
+source lib/msg.sh
 
-notify "Starting with filter $FILTER on $URL..."
+notify "Monitoring on $URL..."
 while true; do
     curl -L --max-redirs 5 $URL > /data/curl.log
-    count=$(grep "$FILTER" "/data/curl.log" | wc -l)
-    echo "COUNT: $count"
-    if [ $count -eq 0 ]; then
-        notify "Filter for $FILTER failed on $URL."
+    match /data/curl.log
+    if [ $? -eq 0 ]; then
+        notify "$(format_message)"
     fi
     sleep $SLEEP
 done

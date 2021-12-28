@@ -3,6 +3,8 @@ from debian:bullseye
 RUN apt-get update
 RUN apt-get install curl -y
 
-COPY . /app
+ADD VERSION .
+
+COPY /app /app
 WORKDIR /app
 CMD /bin/bash /app/watch_web.sh
