@@ -1,5 +1,7 @@
 $ErrorActionPreference = "Stop"
 
+docker login
+
 $USERNAME="nuvious"
 $IMAGE="webwatcher"
 
