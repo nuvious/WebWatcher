@@ -1,4 +1,5 @@
 #!/bin/bash
+set -x
 
 if [ ! -z ${var+SLEEP} ]; then
     echo "SLEEP variable must be set. $SLEEP"
