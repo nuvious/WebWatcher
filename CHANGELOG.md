@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 2.0.2 - 2021-12-29
+
+- Added apt-get upgrade to dockerfile build to mitigate vulnerabilities.
+
+## 2.0.1 - 2021-12-29
+
+- Fixed bug where data directory wasn't beind 
+
 ## 2.0.0 - 2021-12-29
 
 - Modified version since 1.0.2 is a breaking change.
