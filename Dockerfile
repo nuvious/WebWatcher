@@ -1,4 +1,5 @@
-from alpine:latest
+ARG ARCH=
+FROM ${ARCH}alpine:latest
 
 RUN apk add curl
 

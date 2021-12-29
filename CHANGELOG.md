@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 2.0.6 - 2021-12-29
+
+- Went back to alpine base image, version locked it to 3.15 for stability and
+  expanded buildx platforms.
+
 ## 2.0.5 - 2021-12-29
 
 - Attempting to switch to buildx for multi-arch builds.
