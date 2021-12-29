@@ -4,6 +4,9 @@ This is just a simple docker container designed to watch a webpage for a
 particular pattern and notify the user if that pattern is not present on the
 page.
 
+For recent changes, check out the
+[CHANGELOG](https://github.com/nuvious/WebWatcher/blob/master/CHANGELOG.md).
+
 ## Quickstart
 
 Create an env.list file that specifies the following:
@@ -26,7 +29,7 @@ The above example does a negative regex match on the regex SOLD.*OUT and
 notifies the user via pushover if the REGEX does not match the specified url.
 There are different scripts available for different notification mechanisms,
 match conventions, and formatting. For details see the
-[script library documentation](lib/README.md).
+[script library documentation](https://github.com/nuvious/WebWatcher/blob/master/lib/README.md).
 
 Create a data directory (dumps curl outputs for debugging) and launch the
 container.
@@ -71,7 +74,7 @@ Usage Example:
 
 ## Cloud Deployment Guides
 
-- [Azure Deployment](docs/DeployAzure.md)
+- [Azure Deployment](https://github.com/nuvious/WebWatcher/blob/master/docs/DeployAzure.md)
 
 ## Advanced Usage
 

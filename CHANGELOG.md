@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 2.0.4 - 2021-12-29
+
+- Updated documentation links so they would work in dockerhub.
+- Fixed launch.ps1 documentation to remove some outdated flags in comments for
+  usage.
+
 ## 2.0.3 - 2021-12-29
 
 - Switched to alpine.

@@ -1,9 +1,6 @@
 <#
 USAGE:
     .\launch.ps1 `
-        -match [PATH_TO_MATCH_SCRIPT] `
-        -notify [PATH_TO_NOTIFY_SCRIPT] `
-        -msgformatter [PATH_TO_MESSAGE_FORMAT_SCRIPT] `
         -envfile [PATH_TO_ENV_FILE] `
         -name [HUMAN_READABLE_INSTANCE_NAME] `
         -data [DATA_DIR]
@@ -11,9 +8,6 @@ USAGE:
     Ex:
 
     .\launch.ps1 `
-        -match lib\match_grep_regex.sh `
-        -notify lib\notify_pushover.sh `
-        -msgformatter lib\default_formatter.sh `
         -envfile env-bestbuy-xbox.list `
         -name xbox-in-stock-watcher-bestbuy
         -data .\data
