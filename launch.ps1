@@ -19,19 +19,13 @@ USAGE:
         -data .\data
 #>
 
-param($notify, $match, $name, $envfile, $data, $msgformatter)
+param($name, $envfile, $data)
 
-Write-Host "$name, $notify, $match, $envfile, $data"
-
-New-Item -ItemType Directory -Force -Path $data
+New-Item -ItemType Directory -Force -Path ${data}
 docker build -t webwatcher .
 docker run `
     -d `
-    --restart unless-stopped `
     -v ${data}:/data `
-    -v ${notify}:/app/lib/notify.sh `
-    -v ${match}:/app/lib/match.sh `
-    -v ${msgformatter}:/app/lib/msg.sh `
-    --env-file $envfile `
-    --name $name `
+    --env-file ${envfile} `
+    --name ${name} `
     webwatcher

@@ -5,6 +5,7 @@ RUN apt-get install curl -y
 
 ADD VERSION .
 
-COPY /app /app
+COPY app /app
+COPY lib /lib
 WORKDIR /app
 CMD /bin/bash /app/watch_web.sh

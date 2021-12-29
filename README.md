@@ -4,32 +4,32 @@ This is just a simple docker container designed to watch a webpage for a
 particular pattern and notify the user if that pattern is not present on the
 page.
 
-## Requirements
-
-- Docker
-
 ## Quickstart
 
 Create an env.list file that specifies the following:
 
 ```bash
-URL=[URL TO MONITOR WITHOUT QUOTES]
-SLEEP=300s # A sleep between checks; ex 300s, 5m, 1h, etc
+URL=www.shopingforsomethinginhighdemand.com # Some URL to monitor
+SLEEP=5m # A sleep between checks; ex 30, 5m, 1h, etc
+
+FORMATTER=grep_match_formatter # Use the grep specific formatter
+
+MATCH=match_grep_regex_negative  # Use the negative grep regex matcher
 FILTER=SOLD.*OUT # A regex to pattern match
+
+NOTIFY=notify_pushover # Use the pushover notifier script
 APP_TOKEN=[YOUR APP TOKEN] # Pushover app token
 USER_KEY=[YOUR USER KEY] # Pushover user key
 ```
 
-The above is based on the notify_pushover.sh notification script. Variables
-needed to be specified in the env.list file may vary depending on the
-notification script of choice.
+The above example does a negative regex match on the regex SOLD.*OUT and
+notifies the user via pushover if the REGEX does not match the specified url.
+There are different scripts available for different notification mechanisms,
+match conventions, and formatting. For details see the
+[script library documentation](lib/README.md).
 
 Create a data directory (dumps curl outputs for debugging) and launch the
-container. When launching the container map scripts in lib (or any other
-location) to teh match.sh, notify.sh, and msg.sh scripts respectively. This
-allows launching multiple instances with different match conventions,
-notification actions, and message formats. For more information see the section
-on [advanced usage](#advanced-usage).
+container.
 
 ```bash
 # Available in either launch.sh or launch.ps1 for windows.
@@ -38,9 +38,6 @@ docker build -t webwatcher .
 docker run \
     -d \
     -v $PWD/data:/data \
-    -v $PWD/lib/match_grep_regex.sh:/app/lib/match.sh \
-    -v $PWD/lib/notify_pushover.sh:/app/lib/notify.sh \
-    -v $PWD/lib/default_formatter.sh:/app/lib/msg.sh \
     --env-file env.list \
     webwatcher
 ```
@@ -55,10 +52,7 @@ Usage Example:
 
 ```powershell
 .\launch.ps1 `
-    -match ${PWD}/lib/match_grep_regex.sh `
-    -notify ${PWD}/lib/notify_pushover.sh `
     -envfile ${PWD}/env-xbox-bestbuy-instock.list `
-    -msgformatter ${PWD}/lib/default_formatter.sh `
     -name bestbuy-xbox `
     -data ${PWD}/data
 ```
@@ -70,12 +64,9 @@ Usage Example:
 ```bash
 # NOTE: Launch options for the bash script are ordered
 .\launch.sh \
-    $PWD/lib/match_grep_regex.sh \
-    -notify $PWD/lib/notify_pushover.sh \
-    -envfile $PWD/env-xbox-bestbuy-instock.list \
-    -msgformatter $PWD/lib/default_formatter.sh \
-    -name bestbuy-xbox \
-    -data $PWD/data
+    "container-name" \ # The name for the container
+    $PWD/data \ # The data directory for the container
+    $PWD/env-xbox-bestbuy-instock.list # The environment file to use
 ```
 
 ## Advanced Usage
