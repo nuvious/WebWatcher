@@ -13,6 +13,10 @@ fi
 NOTIFY="/lib/$NOTIFY.sh"
 MATCH="/lib/$MATCH.sh"
 FORMATTER="/lib/$FORMATTER.sh"
+DATA_DIR="/data"
+
+mkdir -p $DATA_DIR
+
 
 if [ -f $NOTIFY ]; then
     source $NOTIFY
@@ -37,8 +41,8 @@ fi
 
 notify "Monitoring on $URL..."
 while true; do
-    curl -L --max-redirs 5 $URL > /data/curl.log
-    match /data/curl.log
+    curl -L --max-redirs 5 $URL > $DATA_DIR/curl.log
+    match $DATA_DIR/curl.log
     if [ $? -eq 0 ]; then
         notify "$(format_message)"
     fi

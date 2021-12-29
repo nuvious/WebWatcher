@@ -69,6 +69,10 @@ Usage Example:
     $PWD/env-xbox-bestbuy-instock.list # The environment file to use
 ```
 
+## Cloud Deployment Guides
+
+- [Azure Deployment](docs/DeployAzure.md)
+
 ## Advanced Usage
 
 ### Override Notification Script
