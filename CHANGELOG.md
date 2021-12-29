@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 2.0.0 - 2021-12-29
+
+- Modified version since 1.0.2 is a breaking change.
+
 ## 1.0.2 - 2021-12-29
 
 - Removed necessity for deployments to mount scripts via volumes to notify.sh,
