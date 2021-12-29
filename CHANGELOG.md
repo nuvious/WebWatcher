@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 2.0.5 - 2021-12-29
+
+- Attempting to switch to buildx for multi-arch builds.
+
 ## 2.0.4 - 2021-12-29
 
 - Updated documentation links so they would work in dockerhub.
