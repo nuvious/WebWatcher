@@ -18,5 +18,5 @@ This will outline the process to deploy a container to Azure
 docker --context webwatcher-aci run \
     --env-file env.list \
     --name webwatcher-azure \
-    nuvious/webnginx:latest
+    nuvious/webwatcher:latest
 ```

@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 2.0.3 - 2021-12-29
+
+- Switched to alpine.
+
 ## 2.0.2 - 2021-12-29
 
 - Added apt-get upgrade to dockerfile build to mitigate vulnerabilities.
