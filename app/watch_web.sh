@@ -39,12 +39,48 @@ else
     exit 1
 fi
 
-notify "Monitoring on $URL..."
+if [ ! -z "$URLS" ]; then
+    urls=($URLS)
+else
+    echo "URLS not found."
+    exit 1
+fi
+
+if [ ! -z  "$FILTERS" ]; then
+    filters=($FILTERS)
+else
+    echo "FILTERS not found."
+    exit 1
+fi
+
+if [ -z  "$SLEEP" ]; then
+    echo "SLEEP not found."
+    exit 1
+fi
+
+if [ -z  "$DELAY" ]; then
+    echo "DELAY not found."
+    exit 1
+fi
+
+if [ ${#filters[@]} -ne ${#urls[@]} ]; then
+    echo "URLS (${#urls[@]}) and FILTERS (${#filters[@]}) must be the same number of elements."
+    echo $urls
+    echo $filters
+    exit 1
+fi
+
+notify "Monitoring on $URLS..."
 while true; do
-    curl -L --max-redirs 5 $URL > $DATA_DIR/curl.log
-    match $DATA_DIR/curl.log
-    if [ $? -eq 0 ]; then
-        notify "$(format_message)"
-    fi
+    for i in "${!urls[@]}"; do
+        URL=${urls[$i]}
+        FILTER=${filters[$i]}
+        curl -L --max-redirs 5 $URL > $DATA_DIR/curl.log
+        match $DATA_DIR/curl.log
+        if [ $? -eq 0 ]; then
+            notify "$(format_message)"
+        fi
+        sleep $DELAY
+    done
     sleep $SLEEP
 done

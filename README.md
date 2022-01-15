@@ -1,7 +1,7 @@
 # Web Watcher
 
-This is just a simple docker container designed to watch a webpage for a
-particular pattern and notify the user if that pattern is not present on the
+This is just a simple docker container designed to watch webpages for 
+particular pattern and notify the user if a pattern is/is not present on the
 page.
 
 For recent changes, check out the
@@ -12,15 +12,18 @@ For recent changes, check out the
 Create an env.list file that specifies the following:
 
 ```bash
-URL=www.shopingforsomethinginhighdemand.com # Some URL to monitor
+# A space separated list of urls
+URL=www.shopingforsomethinginhighdemand.com www.shopforsomethingelse.com
+# A space separated list of regex patterns match
+FILTER=SOLD.*OUT SOLD.&OUT
+
 SLEEP=5m # A sleep between checks; ex 30, 5m, 1h, etc
+DEALY=10s # A sleep between urls checked
 
 FORMATTER=grep_match_formatter # Use the grep specific formatter
-
 MATCH=match_grep_regex_negative  # Use the negative grep regex matcher
-FILTER=SOLD.*OUT # A regex to pattern match
-
 NOTIFY=notify_pushover # Use the pushover notifier script
+
 APP_TOKEN=[YOUR APP TOKEN] # Pushover app token
 USER_KEY=[YOUR USER KEY] # Pushover user key
 ```
@@ -31,7 +34,7 @@ There are different scripts available for different notification mechanisms,
 match conventions, and formatting. For details see the
 [script library documentation](https://github.com/nuvious/WebWatcher/blob/master/lib/README.md).
 
-Create a data directory (dumps curl outputs for debugging) and launch the
+Next, create a data directory (dumps curl outputs for debugging) and launch the
 container.
 
 ```bash

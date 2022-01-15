@@ -1,11 +1,11 @@
 ARG ARCH=
 FROM ${ARCH}alpine:latest
 
-RUN apk add curl
+RUN apk add curl bash
 
 ADD VERSION .
 
 COPY app /app
 COPY lib /lib
 WORKDIR /app
-CMD /bin/sh /app/watch_web.sh
+CMD /bin/bash /app/watch_web.sh
