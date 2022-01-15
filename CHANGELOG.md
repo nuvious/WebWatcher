@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## 3.0.1 - 2021-01-15
+
+- Documentation update
+
+## 3.0.0 - 2021-01-15
+
+- Added support for multiple URL/match regex expressions
+- Added required DELAY parameter to sleep between URLs; breaks backwards compatibility
+- URL and FILTER changed to URLS and FILTERS; breaks backwards compatibility
+
 ## 2.0.6 - 2021-12-29
 
 - Went back to alpine base image, version locked it to 3.15 for stability and

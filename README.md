@@ -13,9 +13,9 @@ Create an env.list file that specifies the following:
 
 ```bash
 # A space separated list of urls
-URL=www.shopingforsomethinginhighdemand.com www.shopforsomethingelse.com
+URLS=www.shopingforsomethinginhighdemand.com www.shopforsomethingelse.com
 # A space separated list of regex patterns match
-FILTER=SOLD.*OUT SOLD.&OUT
+FILTERS=SOLD.*OUT SOLD.&OUT
 
 SLEEP=5m # A sleep between checks; ex 30, 5m, 1h, etc
 DEALY=10s # A sleep between urls checked
